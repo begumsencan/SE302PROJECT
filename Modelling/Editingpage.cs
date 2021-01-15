@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿
+using HtmlAgilityPack;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HtmlDocument = HtmlAgilityPack.HtmlDocument;
+
 
 namespace Modelling
 {
@@ -76,11 +77,11 @@ namespace Modelling
         static int a = 1;
         
         private void button1_Click_1(object sender, EventArgs e)
-        {   //berker
+        {   //berker editledi
             a = dataGridView1.ColumnCount - 3;
             HtmlWeb web = new HtmlWeb();
             web.OverrideEncoding = Encoding.UTF8;
-            var doc = web.Load(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
+            var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
             if (IsOpen == 1)
             {
                 doc = web.Load(@Openurl);
@@ -102,7 +103,7 @@ namespace Modelling
                     var html2 = HtmlNode.CreateNode(nodec);
                     ss.AppendChild(html2);
                     y++;
-                    doc.Save(@"C:\Users\PC\Desktop\projese302\foreditturktemp.html", Encoding.UTF8);
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
 
                     continue;
                 }
@@ -118,7 +119,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -138,13 +139,15 @@ namespace Modelling
         
    
         private void button2_Click(object sender, EventArgs e)
-        {//submit button editlenecek  //berker
+        {
+            //submit button editlenecek  
+            //berker editledi 
             dataGridView1.ReadOnly = false;
             HtmlWeb web = new HtmlWeb();
             web.OverrideEncoding = Encoding.UTF8;
 
             Encoding utf8 = Encoding.UTF8;
-            var doc = web.Load(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
+            var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
 
             if (IsOpen == 1)
             {
@@ -315,7 +318,7 @@ namespace Modelling
                         }
                         else
                         {
-                            doc.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html", Encoding.UTF8);
+                            doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
 
                         }
 
@@ -328,17 +331,35 @@ namespace Modelling
 
         private void panel1_Paint(object sender, PaintEventArgs e){}
 
+        //begüm: edit page ve işlev kısmı
+        //berker: var olan dosyanın edit page üzerinde açılması için if elseler 
         private void courseName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == (char)Keys.Enter) { 
             HtmlWeb web = new HtmlWeb();
             web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+               var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
-                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='course_name']");
+            HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='course_name']");
             NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, courseName.Text);
             
-            doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);}
+            
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
+            }
         }
 
         private void courseCode_KeyPress(object sender, KeyPressEventArgs e)
@@ -349,11 +370,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='course_code']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, courseCode.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         } 
         private void FallSemester_Click(object sender, EventArgs e)
@@ -364,21 +400,51 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='semester']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "Güz");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
-            }else
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
+            }
+            else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='semester']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -390,22 +456,52 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='semester']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "Bahar");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='semester']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
         
@@ -417,11 +513,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='weekly_hours']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, Theory.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -434,11 +545,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='app_hours']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, ApplicationLab.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -452,12 +578,27 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-               
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
+
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='ieu_credit']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, LocalCredit.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -468,11 +609,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='ects_credit']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, ECTS.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -483,11 +639,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='pre_requisites']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, Prerequisites.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -498,11 +669,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='course_lang']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, Language.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -513,11 +699,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='course_type']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, CourseType.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -528,11 +729,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='course_level']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, CourseLevel.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -543,11 +759,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='coordinators']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, Coordinator.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+       
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -558,11 +789,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='lecturers']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, ogretimElemani.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -573,11 +819,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='assistants']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, Yardimcilar.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -588,11 +849,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\turkishTemplate.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='book_name']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, CourseBook.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\turkishTemplate.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -603,11 +879,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\turkishTemplate.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='materials']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, CourseMaterials.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\turkishTemplate.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -619,11 +910,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\turkishTemplate.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='purpose']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, courseObjective.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\turkishTemplate.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -634,11 +940,26 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\turkishTemplate.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
-                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='LO_yazili']");
+                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='outcomes']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, LearningOutcomesBox.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\turkishTemplate.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }  
         private void CoreCourses_Click(object sender, EventArgs e)
@@ -648,22 +969,52 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='core_course']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='core_course']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -675,21 +1026,48 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='major_area']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
-            }else
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
+            }
+            else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='major_area']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -700,22 +1078,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='supportive_courses']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='supportive_courses']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -726,22 +1131,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='media_man_skills']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='media_man_skills']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -752,21 +1184,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='trans_skills']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
-            }else
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
+            }
+            else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='trans_skills']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -777,11 +1237,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu1.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+            
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -792,11 +1266,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu2.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -807,11 +1294,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu3.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -822,11 +1322,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu4.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -837,11 +1350,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu5.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+         
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -852,11 +1379,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu6']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu6.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -867,11 +1408,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu7']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu7.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+        
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -882,11 +1437,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu8']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu8.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+          
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -897,11 +1466,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu9']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu9.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -913,11 +1496,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu10']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu10.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -929,11 +1525,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu11']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu11.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -944,11 +1554,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu12']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu12.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -959,11 +1583,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu13']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu13.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+            
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -974,11 +1612,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu14']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu14.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -989,11 +1640,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu15']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu15.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1004,11 +1669,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='konu16']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, konu16.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1019,11 +1697,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik1.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1035,11 +1726,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik2.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1050,11 +1755,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik3.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1065,11 +1783,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik4.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1081,11 +1813,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik5.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1097,11 +1842,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik6']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik6.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1113,11 +1871,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik7']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik7.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1129,11 +1900,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik8']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik8.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1145,11 +1930,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik9']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik9.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1161,11 +1960,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik10']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik10.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1177,11 +1990,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik11']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik11.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1193,11 +2019,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik12']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik12.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1208,11 +2048,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik13']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik13.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1224,11 +2078,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik14']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik14.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1240,11 +2107,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik15']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik15.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1256,11 +2137,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='hazirlik16']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, hazirlik16.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1271,22 +2166,50 @@ namespace Modelling
                     HtmlWeb web = new HtmlWeb();
                     web.OverrideEncoding = Encoding.UTF8;
                     var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
-                    HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki1']");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
+                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki1']");
                     NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                 
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
                 }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
+            }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1298,48 +2221,102 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+          
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
         private void katki1_3_Click(object sender, EventArgs e)
         {
-            
-                if (katki1_3.Checked == true)
+            if (katki1_3.Checked == true)
                 {
                     HtmlWeb web = new HtmlWeb();
                     web.OverrideEncoding = Encoding.UTF8;
                     var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
-                    HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki3']");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
+                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki3']");
                     NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
                 }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
+            }
             else{
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
 
@@ -1352,22 +2329,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1378,22 +2383,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+          
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
         private void katkiLO1_KeyPress(object sender, KeyPressEventArgs e)
@@ -1404,12 +2437,26 @@ namespace Modelling
                     HtmlWeb web = new HtmlWeb();
                     web.OverrideEncoding = Encoding.UTF8;
                     var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
-                    HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki_LO']");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
+                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='1katki_LO']");
                     NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO1.Text);
 
+                    
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
                     doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
-                
+
+                }
+
             }
         }
         private void katki2_1_Click(object sender, EventArgs e)
@@ -1419,21 +2466,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='2katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
-            }else
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
+            }
+            else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='2katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1444,22 +2519,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='2katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='2katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1470,21 +2572,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='2katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
            else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='2katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1495,22 +2625,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='2katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='2katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1521,22 +2678,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='2katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='2katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
         private void katkiLO2_KeyPress(object sender, KeyPressEventArgs e)
@@ -1547,11 +2732,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='2katki_LO']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO2.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+          
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
            
@@ -1564,21 +2763,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1589,22 +2816,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1615,22 +2870,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                } 
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1641,22 +2924,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+            
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1668,21 +2979,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+            
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
         private void katkiLO3_KeyPress(object sender, KeyPressEventArgs e)
@@ -1693,11 +3032,25 @@ namespace Modelling
                     HtmlWeb web = new HtmlWeb();
                     web.OverrideEncoding = Encoding.UTF8;
                     var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
-                    HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki_LO']");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
+                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='3katki_LO']");
                     NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText,katkiLO3.Text);
 
+                   
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
                     doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
            
@@ -1710,22 +3063,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='4katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='4katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1736,22 +3116,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='4katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='4katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1763,22 +3171,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='4katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='4katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -1790,22 +3226,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='4katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='4katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1816,22 +3280,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='4katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='4katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+        
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         } 
         private void katkiLO4_KeyPress(object sender, KeyPressEventArgs e)
@@ -1842,11 +3334,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='4katki_LO']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO4.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
 
@@ -1860,11 +3365,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='5katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
 
             }
@@ -1873,11 +3392,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='5katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1889,11 +3422,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='5katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
 
             }
@@ -1901,11 +3447,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='5katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
       
@@ -1918,11 +3477,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='5katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+         
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
 
             }
@@ -1930,11 +3503,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='5katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+      
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1945,22 +3532,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='5katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='5katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -1971,22 +3585,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='5katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='5katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2001,11 +3643,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='5katki_LO']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO5.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
         }
@@ -2017,21 +3673,48 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='6katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='6katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2042,21 +3725,48 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='6katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='6katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2068,22 +3778,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='6katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='6katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2094,21 +3831,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='6katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+      
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='6katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2119,22 +3884,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='6katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='6katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2147,11 +3939,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='6katki_LO']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO6.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
         }
@@ -2163,21 +3969,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='7katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+         
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='7katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2188,21 +4022,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='7katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='7katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+         
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2214,21 +4076,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='7katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+          
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='7katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+          
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2239,22 +4129,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='7katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='7katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2265,22 +4182,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='7katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='7katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2293,11 +4237,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='7katki_LO']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO7.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
 
@@ -2310,22 +4268,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='8katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='8katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2336,21 +4322,48 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='8katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='8katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2361,21 +4374,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='8katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+            
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='8katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+         
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2387,22 +4428,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='8katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='8katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2414,21 +4483,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='8katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='8katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2441,11 +4538,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='8katki_LO']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO8.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
 
@@ -2459,22 +4569,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='9katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='9katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2485,22 +4623,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='9katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='9katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2513,21 +4678,47 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='9katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='9katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2538,21 +4729,48 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='9katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='9katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2563,22 +4781,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='9katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='9katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2590,11 +4835,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='9katki_LO']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO9.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
            
@@ -2607,22 +4866,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='10katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='10katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2634,22 +4920,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='10katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='10katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2660,22 +4974,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='10katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='10katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2686,21 +5027,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='10katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='10katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2711,22 +5080,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='10katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='10katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2738,11 +5135,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='10katki_LO']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO10.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
         }
@@ -2754,22 +5165,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='11katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='11katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2781,21 +5220,48 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='11katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='11katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2806,22 +5272,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='11katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='11katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2833,22 +5326,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='11katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='11katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+ 
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
         }
@@ -2860,22 +5381,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='11katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='11katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2887,11 +5435,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='11katki_LO']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO11.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+         
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
         }
@@ -2903,21 +5465,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='12katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='12katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2928,22 +5518,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='12katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='12katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -2954,21 +5572,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='12katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+               
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='12katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -2980,22 +5626,48 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='12katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='12katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -3006,21 +5678,48 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='12katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='12katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+       
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -3032,11 +5731,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='12katki_LO']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO12.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
         }
@@ -3048,21 +5760,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='13katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+             
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='13katki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -3073,21 +5813,48 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='13katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='13katki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -3098,21 +5865,50 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='13katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
-            }else
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
+            }
+            else
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='13katki3']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+            
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
 
         }
@@ -3124,22 +5920,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='13katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='13katki4']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -3150,21 +5973,49 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='13katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "X");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='13katki5']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, "-");
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -3176,11 +6027,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='13katki_LO']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, katkiLO13.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+              
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
         }
@@ -3193,11 +6058,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='icKatki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, icKatki1.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
             }
         }
@@ -3210,12 +6088,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='icKatki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, icKatki2.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
 
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -3227,12 +6117,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='sonKatki1']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, sonKatki1.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
 
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -3244,12 +6146,24 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='sonKatki2']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, sonKatki2.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
 
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -3261,12 +6175,25 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='total_no']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, toplam1.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
 
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
@@ -3278,51 +6205,117 @@ namespace Modelling
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
                 var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
                 HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='total_per']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, toplam2.Text);
 
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
 
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
+            }
+        } 
+        private void dersTanimi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+
+                HtmlWeb web = new HtmlWeb();
+                web.OverrideEncoding = Encoding.UTF8;
+                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                if (IsOpen == 1)
+                {
+                    doc = web.Load(@Openurl);
+                }
+                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='description']");
+                NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, dersTanimi.Text);
+
+           
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //save button
-            //save button
+            //save button berker editledi
+            //utku file dialog eklendi 
             HtmlWeb web = new HtmlWeb();
             web.OverrideEncoding = Encoding.UTF8;
+
             if (IsOpen == 0 && IsEng == 0)
+
             {
-                var doc = web.Load(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
-                var doc1 = web.Load(@"C:\Users\PC\Desktop\PROJE\TRTEMP.html");
-                doc.Save(@"C:\Users\PC\Desktop\turkcesvdtemp.html");
-                doc1.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
+                var doc1 = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishtmpBos.html");
+                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+
+                SaveFileDialog dosyakaydet = new SaveFileDialog();
+                dosyakaydet.Filter = "HTML Dosyası|*.html";
+                if (dosyakaydet.ShowDialog() == DialogResult.OK)
+
+                {
+
+                    doc.Save(dosyakaydet.FileName);
+                   
+
+                }
+                doc1.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+
             }
             else if (IsOpen == 1 && IsEng == 0)
             {
 
-                var doc1 = web.Load(@"C:\Users\PC\Desktop\PROJE\TRTEMP.html");
+                var doc1 = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishtmpBos.html");
                 var doc = web.Load(@Openurl);
+
+
                 doc.Save(@Openurl);
-                doc1.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
+
+
+                doc1.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
             }
             else if (IsOpen == 1 && IsEng == 1)
             {
-                var doc2 = web.Load(@"C:\Users\PC\Desktop\PROJE\TRTEMP.html");
-                var doc = web.Load(@"C:\Users\PC\Desktop\PROJE\EnglishTemplateEdited.html");
-                var doc1 = web.Load(@"C:\Users\PC\Desktop\PROJE\ENGTEMP.html");
-                doc.Save(@"C:\Users\PC\Desktop\englishsvdtemp.html");
-                doc1.Save(@"C:\Users\PC\Desktop\PROJE\EnglishTemplateEdited.html");
-                doc2.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
+               
+                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\EnglishTemplateEdited.html");
+                var doc1 = web.Load(@"C:\Users\asus\Desktop\tmps\EnglishtmpBos.html");
+                var doc2 = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishtmpBos.html");
+                SaveFileDialog dosyakaydet = new SaveFileDialog();
+                dosyakaydet.Filter = "HTML Dosyası|*.html";
+                if (dosyakaydet.ShowDialog() == DialogResult.OK)
+                {
+
+                    doc.Save(dosyakaydet.FileName);
+
+                }
+                doc1.Save(@"C:\Users\asus\Desktop\tmps\EnglishTemplateEdited.html");
+                doc2.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             //update button
-            //update button //berker
+            //update button //berker editledi
             if (IsOpen == 1 && IsEng == 0)
             {
                 int c = dataGridView1.ColumnCount;
@@ -3337,7 +6330,7 @@ namespace Modelling
                 }
 
                 if (b != c)
-                {//
+                {
                     dataGridView1.ColumnCount = b;
                     int a = 2;
                     for (int p = c; p < b; p++)
@@ -3360,36 +6353,14 @@ namespace Modelling
 
                     dataGridView1.Rows[m].Cells[g].Value = aa.InnerText;
                     g++;
-
-
                 }
-
-
-
             }
             else
             {
                 button4.Enabled = false;
                 button4.Visible = false;
             }
-        }
-
-        private void dersTanimi_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-
-                HtmlWeb web = new HtmlWeb();
-                web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
-
-                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='description']");
-                NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, dersTanimi.Text);
-
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
-
-            }
-        }
+        } 
     }
 }
 

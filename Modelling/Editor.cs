@@ -28,8 +28,8 @@ namespace Modelling
             webBrowser1.ScriptErrorsSuppressed = true;
 
         }
-        Uri temp = new Uri("file:///C:/Users/asus/Desktop/Templates/newtmp.html");
-        Uri eng = new Uri("file:///C:/Users/asus/Desktop/Templates/engtemp.html");
+        Uri temp = new Uri("file:///C:/Users/asus/Desktop/Tmps/TurkishTemplateEdited.html");
+        Uri eng = new Uri("file:///C:/Users/asus/Desktop/Tmps/EnglishTemplateEdited.html");
 
         private void Editor_Load(object sender, EventArgs e)
         {
