@@ -16,10 +16,18 @@ namespace Modelling
 {
     public partial class Editingpage : Form
     {
-       public Editingpage()
+        public int IsOpen { get; set; }
+        public string Openurl;
+        public int IsEng { get; set; }
+        public Editingpage()
         {
-            InitializeComponent(); 
-           
+            InitializeComponent();
+
+        }
+        public Editingpage(string openurl)
+        {
+            InitializeComponent();
+            Openurl = openurl;
         }
         public void update()
         {
@@ -62,50 +70,60 @@ namespace Modelling
             row = new ArrayList();
             row.Add("Final Exam     ");
             dataGridView1.Rows.Add(row.ToArray());
+            row.Add("Total     ");
+            dataGridView1.Rows.Add(row.ToArray());
         }
         static int a = 1;
         
         private void button1_Click_1(object sender, EventArgs e)
-        {   //adds columns
-            //add LO button editlenecek
+        {   //berker
+            a = dataGridView1.ColumnCount - 3;
             HtmlWeb web = new HtmlWeb();
             web.OverrideEncoding = Encoding.UTF8;
-            var htmlDoc = new HtmlDocument();
-            Encoding utf8 = Encoding.UTF8;
-
-
-            var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+            var doc = web.Load(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
+            if (IsOpen == 1)
+            {
+                doc = web.Load(@Openurl);
+            }
             int c = dataGridView1.ColumnCount;
             dataGridView1.ColumnCount++;
             a++;
             dataGridView1.Columns[c++].Name = "LO" + a.ToString();
-
-            string[] tags = { "particip", "lab", "field", "quiz", "hw", "prsnt", "project", "seminar", "oral", "mid", "fin", "total" };
+            string[] tags = { "attend", "lab", "field", "quiz", "homework", "present", "project", "seminar", "portfolio", "mid", "final", "total" };
             int i = 0;
             int y = 0;
-
-
+            string[] nodeholder = new string[11];
             foreach (HtmlNode ss in doc.DocumentNode.SelectNodes("//table[@id='evaluation_table1']//tr"))
             {
 
                 if (y == 0)
                 {
-                    string nodec = "<td style=width: 15 %  align=center><strong>LO" + a + "</strong></td>";
+                    string nodec = "<td style=width: 15 %  align=center><strong>LO" + a.ToString() + "</strong></td>";
                     var html2 = HtmlNode.CreateNode(nodec);
                     ss.AppendChild(html2);
-                    Console.WriteLine(ss.OuterHtml);
                     y++;
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save(@"C:\Users\PC\Desktop\projese302\foreditturktemp.html", Encoding.UTF8);
 
                     continue;
                 }
-                string nodecr = "<td><div class=editinput id=LO" + a + tags[i] + ">-</div></td>";
+                string nodecr = "<td><div class=editinput id=LO" + a.ToString() + tags[i] + ">-</div></td>";
                 var html = HtmlNode.CreateNode(nodecr);
                 ss.AppendChild(html);
-                Console.WriteLine(ss.OuterHtml);
-                doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                if (IsOpen == 1)
+                {
+                    doc.Save(@Openurl, Encoding.UTF8);
+                    IsOpen = 1;
+
+                }
+                else
+                {
+                    doc.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                }
 
                 i++;
+
             }
         }
 
@@ -120,10 +138,41 @@ namespace Modelling
         
    
         private void button2_Click(object sender, EventArgs e)
-        {//submit button editlenecek
+        {//submit button editlenecek  //berker
             dataGridView1.ReadOnly = false;
             HtmlWeb web = new HtmlWeb();
             web.OverrideEncoding = Encoding.UTF8;
+
+            Encoding utf8 = Encoding.UTF8;
+            var doc = web.Load(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
+
+            if (IsOpen == 1)
+            {
+                doc = web.Load(@Openurl);
+            }
+
+
+            int b = 0;
+            foreach (HtmlNode kk in doc.DocumentNode.SelectNodes("//table[@id='evaluation_table1']//tr[@class='table_top']//td"))
+            {
+                b++;
+
+            }
+
+            string[] tags = { "attend", "lab", "field", "quiz", "homework", "present", "project", "seminar", "portfolio", "mid", "final", "total" };
+            string[,] array = new string[b - 4, 12];
+            if (b > 4)
+            {
+                for (int i = 0; i < b - 4; i++)
+                {
+                    for (int j = 0; j < 12; j++)
+                    {
+                        array[i, j] = "//div[ @id='LO" + (i + 2).ToString() + tags[j] + "'" + "]";
+
+                    }
+                }
+            }
+
             string[] patharray = {
             "//div[ @id='attendance_no']",
             "//div[ @id='attendance_per']",
@@ -134,6 +183,7 @@ namespace Modelling
             "//div[ @id='lab_per']",
             "//div[ @id='LO1lab']",
 
+
             "//div[ @id='fieldwork_no']",
             "//div[ @id='fieldwork_per']",
              "//div[ @id='LO1field']",
@@ -142,9 +192,11 @@ namespace Modelling
              "//div[ @id='quiz_per']",
              "//div[ @id='LO1quiz']",
 
+
              "//div[ @id='homework_no']",
              "//div[ @id='homework_per']",
             "//div[ @id='LO1homework']",
+
 
               "//div[ @id='presentation_no']",
              "//div[ @id='presentation_per']",
@@ -170,23 +222,26 @@ namespace Modelling
              "//div[ @id='final_per']",
              "//div[ @id='LO1final']",
 
-           //"//div[ @id='ara_total_no']",
-           //  "//div[ @id='ara_total_per']",
-           //  "//div[ @id='LOsum']"  
+           "//div[ @id='ara_total_no']",
+             "//div[ @id='ara_total_per']",
+             "//div[ @id='LOsum']"
             };
 
 
-            var htmlDoc = new HtmlDocument();
-            Encoding utf8 = Encoding.UTF8;
-            var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+
+
+
+
+
+
 
             //HtmlNode node = doc.DocumentNode.SelectSingleNode(xpath);
             //HtmlNode node1 = doc.DocumentNode.SelectSingleNode(xpath1);
             int c = 0;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 12; i++)
             {
 
-                if (c <= 33)
+                if (c <= patharray.Length)
                 {
 
                     HtmlNode node = doc.DocumentNode.SelectSingleNode(patharray[c]);
@@ -218,11 +273,57 @@ namespace Modelling
                     {
                         node2.InnerHtml = node.InnerHtml.Replace(node.InnerText, "-");
                     }
+
+
                     c = c + 3;
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    if (IsOpen == 1)
+                    {
+                        doc.Save(@Openurl, Encoding.UTF8);
+                        IsOpen = 1;
+
+                    }
+                    else
+                    {
+                        doc.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdit.html", Encoding.UTF8);
+
+                    }
+
+
+                }
+            }
+            if (b > 4)
+            {
+                for (int i = 0; i < b - 4; i++)
+                {
+                    for (int u = 0; u < 12; u++)
+                    {
+                        string a = "LO" + (i + 2).ToString();
+                        HtmlNode node = doc.DocumentNode.SelectSingleNode(array[i, u]);
+                        if ((string)dataGridView1.Rows[u].Cells[a].Value != null)
+                        {
+                            node.InnerHtml = node.InnerHtml.Replace(node.InnerText, (string)dataGridView1.Rows[u].Cells[a].Value);
+                        }
+                        else
+                        {
+                            node.InnerHtml = node.InnerHtml.Replace(node.InnerText, "-");
+                        }
+                        if (IsOpen == 1)
+                        {
+                            doc.Save(@Openurl, Encoding.UTF8);
+                            IsOpen = 1;
+
+                        }
+                        else
+                        {
+                            doc.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html", Encoding.UTF8);
+
+                        }
+
+                    }
                 }
             }
         }
+
         private void vScrollBar2_Scroll(object sender, ScrollEventArgs e){}
 
         private void panel1_Paint(object sender, PaintEventArgs e){}
@@ -3189,11 +3290,88 @@ namespace Modelling
         private void button4_Click(object sender, EventArgs e)
         {
             //save button
+            //save button
+            HtmlWeb web = new HtmlWeb();
+            web.OverrideEncoding = Encoding.UTF8;
+            if (IsOpen == 0 && IsEng == 0)
+            {
+                var doc = web.Load(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
+                var doc1 = web.Load(@"C:\Users\PC\Desktop\PROJE\TRTEMP.html");
+                doc.Save(@"C:\Users\PC\Desktop\turkcesvdtemp.html");
+                doc1.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
+            }
+            else if (IsOpen == 1 && IsEng == 0)
+            {
+
+                var doc1 = web.Load(@"C:\Users\PC\Desktop\PROJE\TRTEMP.html");
+                var doc = web.Load(@Openurl);
+                doc.Save(@Openurl);
+                doc1.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
+            }
+            else if (IsOpen == 1 && IsEng == 1)
+            {
+                var doc2 = web.Load(@"C:\Users\PC\Desktop\PROJE\TRTEMP.html");
+                var doc = web.Load(@"C:\Users\PC\Desktop\PROJE\EnglishTemplateEdited.html");
+                var doc1 = web.Load(@"C:\Users\PC\Desktop\PROJE\ENGTEMP.html");
+                doc.Save(@"C:\Users\PC\Desktop\englishsvdtemp.html");
+                doc1.Save(@"C:\Users\PC\Desktop\PROJE\EnglishTemplateEdited.html");
+                doc2.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdited.html");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             //update button
+            //update button //berker
+            if (IsOpen == 1 && IsEng == 0)
+            {
+                int c = dataGridView1.ColumnCount;
+                int b = 0;
+                HtmlWeb web = new HtmlWeb();
+                web.OverrideEncoding = Encoding.UTF8;
+                var doc = web.Load(@Openurl);
+                foreach (HtmlNode kk in doc.DocumentNode.SelectNodes("//table[@id='evaluation_table1']//tr[@class='table_top']//td"))
+                {
+                    b++;
+
+                }
+
+                if (b != c)
+                {//
+                    dataGridView1.ColumnCount = b;
+                    int a = 2;
+                    for (int p = c; p < b; p++)
+                    {
+
+                        dataGridView1.Columns[p].Name = "LO" + a.ToString();
+                        a++;
+                    }
+                }
+
+                int m = 0;
+                int g = 1;
+                foreach (HtmlNode aa in doc.DocumentNode.SelectNodes("//table[@id='evaluation_table1']//tbody//td//div"))
+                {
+                    if (g > dataGridView1.ColumnCount - 1)
+                    {
+                        g = 1;
+                        m++;
+                    }
+
+                    dataGridView1.Rows[m].Cells[g].Value = aa.InnerText;
+                    g++;
+
+
+                }
+
+
+
+            }
+            else
+            {
+                button4.Enabled = false;
+                button4.Visible = false;
+            }
         }
 
         private void dersTanimi_KeyPress(object sender, KeyPressEventArgs e)

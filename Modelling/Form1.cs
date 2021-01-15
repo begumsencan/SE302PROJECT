@@ -50,8 +50,12 @@ namespace Modelling
 
         private void createNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //berker
             this.Hide();
             var Editor = new Editor();
+            Editingpage edp = new Editingpage();
+            //edp.IsOpen = 0;
+            Editor.Engprop = 0;
             Editor.Closed += (s, args) => this.Close();
             Editor.Show();
 
@@ -68,10 +72,12 @@ namespace Modelling
             using (OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, ValidateNames = true })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
-                {
+                { //berker
 
                     Uri uri = new Uri(ofd.FileName);
                     Editor obj = new Editor();
+                    Editingpage edp = new Editingpage(uri.LocalPath);
+                    edp.IsOpen = 1;
                     obj.MyProperty = uri;
                     obj.Closed += (s, args) => this.Close();
                     obj.Show();
@@ -87,8 +93,12 @@ namespace Modelling
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Hide();
+            this.Hide(); //berker
             var Editor = new Editor();
+            Editingpage edp = new Editingpage();
+            //edp.IsOpen = 0;
+
+            Editor.Engprop = 0;
             Editor.Closed += (s, args) => this.Close();
             Editor.Show();
         }
@@ -96,14 +106,17 @@ namespace Modelling
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-          using(OpenFileDialog ofd=new OpenFileDialog() {Multiselect=false, ValidateNames=true })
+            using (OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, ValidateNames = true })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
 
-                    Uri uri = new Uri(ofd.FileName);
+                    Uri uri = new Uri(ofd.FileName); //berker
                     Editor obj = new Editor();
-                    obj.MyProperty=uri;
+                    //Editingpage edp = new Editingpage(uri.LocalPath);
+                    //edp.IsOpen = 1; 
+                    obj.Engprop = 0;
+                    obj.MyProperty = uri;
                     obj.Closed += (s, args) => this.Close();
                     obj.Show();
 
@@ -119,9 +132,11 @@ namespace Modelling
 
         private void englishToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide(); //berker
             var Editor = new Editor();
             Editor.Engprop = 1;
+            //Editingpage edp = new Editingpage();
+            //edp.IsOpen = 0;
             Editor.Closed += (s, args) => this.Close();
             Editor.Show();
 
@@ -129,9 +144,11 @@ namespace Modelling
 
         private void turkishToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide();  //berker
             var Editor = new Editor();
-            
+            //Editingpage edp = new Editingpage();
+            //edp.IsOpen = 0;
+            Editor.Engprop = 0;
             Editor.Closed += (s, args) => this.Close();
             Editor.Show();
         }

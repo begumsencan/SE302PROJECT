@@ -110,9 +110,32 @@ namespace Modelling
 
         private void button4_Click(object sender, EventArgs e)
         {
-      
+
+            //berker
+
             var Edit = new Editingpage();
-            Edit.Show();
+            if (MyProperty == null && Engprop == 1)
+            {
+                Edit = new Editingpage(eng.LocalPath);
+                Edit.IsOpen = 1; //for eng temp
+                Edit.IsEng = 1;
+                Edit.Show();
+            }
+            if (MyProperty != temp && Engprop != 1 && MyProperty != null)
+            {
+                Edit = new Editingpage(MyProperty.LocalPath);
+                Edit.IsOpen = 1; //for open
+                Edit.IsEng = 0;
+                Edit.Show();
+            }
+
+            if (MyProperty == null && Engprop != 1)
+            {
+                Edit.IsOpen = 0; //for tr temp
+                Edit.IsEng = 0;
+                Edit.Show();
+
+            }
         }
     }
 }
