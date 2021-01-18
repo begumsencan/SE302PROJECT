@@ -117,8 +117,8 @@ namespace Modelling
 
             //berker
             string yol = Application.StartupPath;
-            string temp = yol + "\\TurkishTemplateEdited.html";
-            string eng = yol + "\\EnglishTemplateEdited.html";
+            string temp = yol + "\\Syllabustmp\\TurkishTemplateEdited.html";
+            string eng = yol + "\\Syllabustmp\\EnglishTemplateEdited.html";
 
             var Edit = new Editingpage();
             if (MyProperty == null && Engprop == 1)
