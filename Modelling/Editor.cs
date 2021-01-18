@@ -21,19 +21,21 @@ namespace Modelling
     public partial class Editor : Form
     {
         public int Engprop { get; set; }
-        public Uri MyProperty { get; set; }
+        public string MyProperty { get; set; }
         public Editor()
         {
            InitializeComponent();
             webBrowser1.ScriptErrorsSuppressed = true;
 
         }
-        Uri temp = new Uri("file:///C:/Users/asus/Desktop/Tmps/TurkishTemplateEdited.html");
-        Uri eng = new Uri("file:///C:/Users/asus/Desktop/Tmps/EnglishTemplateEdited.html");
-
+       
         private void Editor_Load(object sender, EventArgs e)
         {
-            
+            string yol = Application.StartupPath;
+            string temp = yol + "\\Syllabustmp\\TurkishTemplateEdited.html";
+            string eng = yol + "\\Syllabustmp\\EnglishTemplateEdited.html";
+
+
             if (Engprop==1)
             {
                 
@@ -60,10 +62,12 @@ namespace Modelling
 
 
             var html = httpClient.GetStringAsync(textBox1.Text); // get isteği gönderir ve onu stringe çevirir
-
+            string yol = Application.StartupPath;
             string b = html.Result;
-            File.WriteAllText(@"C:\Users\PC\Desktop\Modelling\website.htm", b);
-            File.WriteAllText(@"C:\Users\PC\Desktop\Modelling\website.txt", b);
+            System.IO.Directory.CreateDirectory(yol+"\\Syllabustmp\\imported");
+            File.WriteAllText(yol + "\\Syllabustmp\\imported\\website.htm", b);
+            File.WriteAllText(yol + "\\Syllabustmp\\imported\\website.txt", b);
+            MessageBox.Show("Your syllabus files are successfully imported !");
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -112,18 +116,21 @@ namespace Modelling
         {
 
             //berker
+            string yol = Application.StartupPath;
+            string temp = yol + "\\TurkishTemplateEdited.html";
+            string eng = yol + "\\EnglishTemplateEdited.html";
 
             var Edit = new Editingpage();
             if (MyProperty == null && Engprop == 1)
             {
-                Edit = new Editingpage(eng.LocalPath);
+                Edit = new Editingpage(eng);
                 Edit.IsOpen = 1; //for eng temp
                 Edit.IsEng = 1;
                 Edit.Show();
             }
             if (MyProperty != temp && Engprop != 1 && MyProperty != null)
             {
-                Edit = new Editingpage(MyProperty.LocalPath);
+                Edit = new Editingpage(MyProperty);
                 Edit.IsOpen = 1; //for open
                 Edit.IsEng = 0;
                 Edit.Show();

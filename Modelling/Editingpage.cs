@@ -20,6 +20,7 @@ namespace Modelling
         public int IsOpen { get; set; }
         public string Openurl;
         public int IsEng { get; set; }
+        string yol = Application.StartupPath;
         public Editingpage()
         {
             InitializeComponent();
@@ -71,9 +72,11 @@ namespace Modelling
             row = new ArrayList();
             row.Add("Final Exam     ");
             dataGridView1.Rows.Add(row.ToArray());
+            row = new ArrayList();
             row.Add("Total     ");
             dataGridView1.Rows.Add(row.ToArray());
         }
+       
         static int a = 1;
         
         private void button1_Click_1(object sender, EventArgs e)
@@ -81,7 +84,7 @@ namespace Modelling
             a = dataGridView1.ColumnCount - 3;
             HtmlWeb web = new HtmlWeb();
             web.OverrideEncoding = Encoding.UTF8;
-            var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+            var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
             if (IsOpen == 1)
             {
                 doc = web.Load(@Openurl);
@@ -103,7 +106,7 @@ namespace Modelling
                     var html2 = HtmlNode.CreateNode(nodec);
                     ss.AppendChild(html2);
                     y++;
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                     continue;
                 }
@@ -119,7 +122,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save(yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -147,7 +150,7 @@ namespace Modelling
             web.OverrideEncoding = Encoding.UTF8;
 
             Encoding utf8 = Encoding.UTF8;
-            var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+            var doc = web.Load(yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
 
             if (IsOpen == 1)
             {
@@ -229,15 +232,7 @@ namespace Modelling
              "//div[ @id='ara_total_per']",
              "//div[ @id='LOsum']"
             };
-
-
-
-
-
-
-
-
-
+            
             //HtmlNode node = doc.DocumentNode.SelectSingleNode(xpath);
             //HtmlNode node1 = doc.DocumentNode.SelectSingleNode(xpath1);
             int c = 0;
@@ -287,7 +282,7 @@ namespace Modelling
                     }
                     else
                     {
-                        doc.Save(@"C:\Users\PC\Desktop\PROJE\TurkishTemplateEdit.html", Encoding.UTF8);
+                        doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                     }
 
@@ -318,7 +313,7 @@ namespace Modelling
                         }
                         else
                         {
-                            doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                            doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                         }
 
@@ -338,7 +333,7 @@ namespace Modelling
             if(e.KeyChar == (char)Keys.Enter) { 
             HtmlWeb web = new HtmlWeb();
             web.OverrideEncoding = Encoding.UTF8;
-               var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+               var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -356,7 +351,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -369,7 +364,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -387,7 +382,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -399,7 +394,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -417,7 +412,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -425,7 +420,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -442,7 +437,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -455,7 +450,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -473,7 +468,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -481,7 +476,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -499,7 +494,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -512,7 +507,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -530,7 +525,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -544,7 +539,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -562,7 +557,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -577,7 +572,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -596,7 +591,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -608,7 +603,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -626,7 +621,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -638,7 +633,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -656,7 +651,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -668,7 +663,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -686,7 +681,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -698,7 +693,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -716,7 +711,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -728,7 +723,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -746,7 +741,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -758,7 +753,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -776,7 +771,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -788,7 +783,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -806,7 +801,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -818,7 +813,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -836,7 +831,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -848,7 +843,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\turkishTemplate.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -866,7 +861,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -878,7 +873,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\turkishTemplate.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -896,7 +891,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -909,7 +904,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\turkishTemplate.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -927,7 +922,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -939,13 +934,13 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\turkishTemplate.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
                 }
 
-                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='outcomes']");
+                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='outcome']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, LearningOutcomesBox.Text);
 
               
@@ -957,7 +952,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -968,7 +963,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -986,7 +981,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -994,7 +989,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1012,7 +1007,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1025,7 +1020,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1041,7 +1036,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1049,7 +1044,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1065,7 +1060,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1077,7 +1072,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1093,7 +1088,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1101,7 +1096,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1118,7 +1113,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1130,7 +1125,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1146,7 +1141,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1154,7 +1149,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1171,7 +1166,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1183,7 +1178,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1200,7 +1195,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1208,7 +1203,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1224,7 +1219,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1236,7 +1231,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1253,7 +1248,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1265,7 +1260,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1281,7 +1276,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1293,7 +1288,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1309,7 +1304,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1321,7 +1316,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1337,7 +1332,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1349,7 +1344,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1366,7 +1361,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1378,7 +1373,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1395,7 +1390,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1407,7 +1402,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1424,7 +1419,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1436,7 +1431,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1453,7 +1448,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1465,7 +1460,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1482,7 +1477,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1495,7 +1490,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1511,7 +1506,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1524,7 +1519,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1541,7 +1536,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1553,7 +1548,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1570,7 +1565,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1582,7 +1577,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1599,7 +1594,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1611,7 +1606,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1627,7 +1622,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1639,7 +1634,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1656,7 +1651,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1668,7 +1663,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1684,7 +1679,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1696,7 +1691,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1712,7 +1707,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1725,7 +1720,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1742,7 +1737,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1754,7 +1749,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1770,7 +1765,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1782,7 +1777,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1799,7 +1794,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1812,7 +1807,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1828,7 +1823,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1841,7 +1836,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1857,7 +1852,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1870,7 +1865,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1886,7 +1881,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1899,7 +1894,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1916,7 +1911,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1929,7 +1924,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1946,7 +1941,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1959,7 +1954,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -1976,7 +1971,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -1989,7 +1984,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2005,7 +2000,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2018,7 +2013,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2035,7 +2030,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2047,7 +2042,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2064,7 +2059,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2077,7 +2072,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2093,7 +2088,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2106,7 +2101,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2123,7 +2118,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2136,7 +2131,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2153,7 +2148,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2165,7 +2160,7 @@ namespace Modelling
                 {
                     HtmlWeb web = new HtmlWeb();
                     web.OverrideEncoding = Encoding.UTF8;
-                    var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                    var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2182,7 +2177,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2190,7 +2185,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2207,7 +2202,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2220,7 +2215,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2237,7 +2232,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2245,7 +2240,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2262,7 +2257,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2274,7 +2269,7 @@ namespace Modelling
                 {
                     HtmlWeb web = new HtmlWeb();
                     web.OverrideEncoding = Encoding.UTF8;
-                    var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                    var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2290,14 +2285,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else{
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2314,7 +2309,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2328,7 +2323,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2345,7 +2340,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2353,7 +2348,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2370,7 +2365,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2382,7 +2377,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2399,7 +2394,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2407,7 +2402,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2424,7 +2419,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2436,7 +2431,7 @@ namespace Modelling
                 
                     HtmlWeb web = new HtmlWeb();
                     web.OverrideEncoding = Encoding.UTF8;
-                    var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                    var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2453,7 +2448,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -2465,7 +2460,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2481,7 +2476,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2489,7 +2484,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2506,7 +2501,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2518,7 +2513,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2535,7 +2530,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2543,7 +2538,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2559,7 +2554,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2571,7 +2566,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2588,14 +2583,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
            else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2612,7 +2607,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2624,7 +2619,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2641,7 +2636,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2649,7 +2644,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2665,7 +2660,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2677,7 +2672,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2694,7 +2689,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2702,7 +2697,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2719,7 +2714,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2731,7 +2726,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2748,7 +2743,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -2762,7 +2757,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2779,14 +2774,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2803,7 +2798,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2815,7 +2810,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2832,7 +2827,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2840,7 +2835,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2857,7 +2852,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2869,7 +2864,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2886,7 +2881,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2894,7 +2889,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2911,7 +2906,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2923,7 +2918,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2940,7 +2935,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2948,7 +2943,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2965,7 +2960,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -2978,7 +2973,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -2995,14 +2990,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3019,7 +3014,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3031,7 +3026,7 @@ namespace Modelling
                 
                     HtmlWeb web = new HtmlWeb();
                     web.OverrideEncoding = Encoding.UTF8;
-                    var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                    var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3048,7 +3043,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -3062,7 +3057,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3078,7 +3073,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3086,7 +3081,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3103,7 +3098,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3115,7 +3110,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3132,7 +3127,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3140,7 +3135,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3157,7 +3152,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3170,7 +3165,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3187,7 +3182,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3195,7 +3190,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3212,7 +3207,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3225,7 +3220,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3242,7 +3237,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3250,7 +3245,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3267,7 +3262,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3279,7 +3274,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3296,7 +3291,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3304,7 +3299,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3321,7 +3316,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3333,7 +3328,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3349,7 +3344,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -3364,7 +3359,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3381,7 +3376,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -3391,7 +3386,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3408,7 +3403,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3421,7 +3416,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3437,7 +3432,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -3446,7 +3441,7 @@ namespace Modelling
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3462,7 +3457,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3476,7 +3471,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3493,7 +3488,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -3502,7 +3497,7 @@ namespace Modelling
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3519,7 +3514,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3531,7 +3526,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3548,7 +3543,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3556,7 +3551,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3572,7 +3567,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3584,7 +3579,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3601,7 +3596,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3609,7 +3604,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3626,7 +3621,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3642,7 +3637,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3659,7 +3654,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -3672,7 +3667,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3688,14 +3683,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3712,7 +3707,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3724,7 +3719,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3741,14 +3736,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3764,7 +3759,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3777,7 +3772,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3793,7 +3788,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3801,7 +3796,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3818,7 +3813,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3830,7 +3825,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3847,14 +3842,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3871,7 +3866,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3883,7 +3878,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3899,7 +3894,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3907,7 +3902,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3924,7 +3919,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -3938,7 +3933,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3955,7 +3950,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -3968,7 +3963,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -3985,14 +3980,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4009,7 +4004,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4021,7 +4016,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4038,14 +4033,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4062,7 +4057,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4075,7 +4070,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4092,14 +4087,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4116,7 +4111,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4128,7 +4123,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4145,7 +4140,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4153,7 +4148,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4169,7 +4164,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4181,7 +4176,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4198,7 +4193,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4206,7 +4201,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4222,7 +4217,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4236,7 +4231,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4253,7 +4248,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -4267,7 +4262,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4284,7 +4279,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4292,7 +4287,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4309,7 +4304,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4321,7 +4316,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4338,14 +4333,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4361,7 +4356,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4373,7 +4368,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4390,14 +4385,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4414,7 +4409,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4427,7 +4422,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4444,7 +4439,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4452,7 +4447,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4469,7 +4464,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4482,7 +4477,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4499,14 +4494,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4523,7 +4518,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4537,7 +4532,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4553,7 +4548,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -4568,7 +4563,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4585,7 +4580,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4593,7 +4588,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4610,7 +4605,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4622,7 +4617,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4639,7 +4634,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4647,7 +4642,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4663,7 +4658,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4677,7 +4672,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4693,14 +4688,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4716,7 +4711,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4728,7 +4723,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4745,14 +4740,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4768,7 +4763,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4780,7 +4775,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4796,7 +4791,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4804,7 +4799,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4821,7 +4816,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4834,7 +4829,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4851,7 +4846,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -4865,7 +4860,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4881,7 +4876,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4889,7 +4884,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4906,7 +4901,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4919,7 +4914,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4936,7 +4931,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4944,7 +4939,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4961,7 +4956,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4973,7 +4968,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -4989,7 +4984,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -4997,7 +4992,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5014,7 +5009,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5026,7 +5021,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5043,14 +5038,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5067,7 +5062,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5079,7 +5074,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5096,7 +5091,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5104,7 +5099,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5121,7 +5116,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5134,7 +5129,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5151,7 +5146,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -5164,7 +5159,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5181,7 +5176,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5189,7 +5184,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5206,7 +5201,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5219,7 +5214,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5235,14 +5230,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5259,7 +5254,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5271,7 +5266,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5287,7 +5282,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5295,7 +5290,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5312,7 +5307,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5325,7 +5320,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5342,7 +5337,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5350,7 +5345,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5367,7 +5362,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -5380,7 +5375,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5397,7 +5392,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5405,7 +5400,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5421,7 +5416,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5434,7 +5429,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5451,7 +5446,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -5464,7 +5459,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5481,14 +5476,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5505,7 +5500,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5517,7 +5512,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5534,7 +5529,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5542,7 +5537,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5559,7 +5554,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5571,7 +5566,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5588,14 +5583,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5612,7 +5607,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5625,7 +5620,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5641,7 +5636,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5649,7 +5644,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5665,7 +5660,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5677,7 +5672,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5693,14 +5688,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5717,7 +5712,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5730,7 +5725,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5746,7 +5741,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -5759,7 +5754,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5776,14 +5771,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5800,7 +5795,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5812,7 +5807,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5829,14 +5824,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5852,7 +5847,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5864,7 +5859,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5881,7 +5876,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5889,7 +5884,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5906,7 +5901,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5919,7 +5914,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5935,7 +5930,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5943,7 +5938,7 @@ namespace Modelling
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5960,7 +5955,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -5972,7 +5967,7 @@ namespace Modelling
             {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -5989,14 +5984,14 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
             else {
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -6013,7 +6008,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -6026,7 +6021,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -6043,7 +6038,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -6057,7 +6052,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -6073,7 +6068,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
 
@@ -6087,7 +6082,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -6103,7 +6098,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -6116,7 +6111,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -6132,7 +6127,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -6145,7 +6140,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -6161,7 +6156,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -6174,7 +6169,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -6191,7 +6186,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -6204,7 +6199,7 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
@@ -6220,7 +6215,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -6232,12 +6227,12 @@ namespace Modelling
 
                 HtmlWeb web = new HtmlWeb();
                 web.OverrideEncoding = Encoding.UTF8;
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
                 if (IsOpen == 1)
                 {
                     doc = web.Load(@Openurl);
                 }
-                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//td[ @id='description']");
+                HtmlNode NameNode = doc.DocumentNode.SelectSingleNode("//div[ @id='description']");
                 NameNode.InnerHtml = NameNode.InnerHtml.Replace(NameNode.InnerText, dersTanimi.Text);
 
            
@@ -6249,7 +6244,7 @@ namespace Modelling
                 }
                 else
                 {
-                    doc.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html", Encoding.UTF8);
+                    doc.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html", Encoding.UTF8);
 
                 }
             }
@@ -6265,8 +6260,8 @@ namespace Modelling
             if (IsOpen == 0 && IsEng == 0)
 
             {
-                var doc1 = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishtmpBos.html");
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                var doc1 = web.Load(yol + "\\Syllabustmp\\TurkishtmpBos.html");
+                var doc = web.Load( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
 
                 SaveFileDialog dosyakaydet = new SaveFileDialog();
                 dosyakaydet.Filter = "HTML Dosyası|*.html";
@@ -6278,27 +6273,29 @@ namespace Modelling
                    
 
                 }
-                doc1.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                doc1.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
+                this.Close();
 
             }
             else if (IsOpen == 1 && IsEng == 0)
             {
 
-                var doc1 = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishtmpBos.html");
+                var doc1 = web.Load(yol + "\\Syllabustmp\\TurkishtmpBos.html");
                 var doc = web.Load(@Openurl);
 
 
                 doc.Save(@Openurl);
 
 
-                doc1.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                doc1.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
+                this.Close();
             }
             else if (IsOpen == 1 && IsEng == 1)
             {
                
-                var doc = web.Load(@"C:\Users\asus\Desktop\tmps\EnglishTemplateEdited.html");
-                var doc1 = web.Load(@"C:\Users\asus\Desktop\tmps\EnglishtmpBos.html");
-                var doc2 = web.Load(@"C:\Users\asus\Desktop\tmps\TurkishtmpBos.html");
+                var doc = web.Load(yol + "\\Syllabustmp\\EnglishTemplateEdited.html");
+                var doc1 = web.Load(yol + "\\Syllabustmp\\EnglishtmpBos.html");
+                var doc2 = web.Load(yol + "\\Syllabustmp\\TurkishtmpBos.html");
                 SaveFileDialog dosyakaydet = new SaveFileDialog();
                 dosyakaydet.Filter = "HTML Dosyası|*.html";
                 if (dosyakaydet.ShowDialog() == DialogResult.OK)
@@ -6307,9 +6304,12 @@ namespace Modelling
                     doc.Save(dosyakaydet.FileName);
 
                 }
-                doc1.Save(@"C:\Users\asus\Desktop\tmps\EnglishTemplateEdited.html");
-                doc2.Save(@"C:\Users\asus\Desktop\tmps\TurkishTemplateEdited.html");
+                doc1.Save(yol + "\\Syllabustmp\\EnglishTemplateEdited.html");
+                doc2.Save( yol + "\\Syllabustmp\\TurkishTemplateEdited.html");
+                this.Close();
+
             }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)

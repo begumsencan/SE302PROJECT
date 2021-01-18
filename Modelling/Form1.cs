@@ -40,7 +40,8 @@ namespace Modelling
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var help = new Help();
+            help.Show();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -78,7 +79,7 @@ namespace Modelling
                     Editor obj = new Editor();
                     Editingpage edp = new Editingpage(uri.LocalPath);
                     edp.IsOpen = 1;
-                    obj.MyProperty = uri;
+                    obj.MyProperty = uri.LocalPath;
                     obj.Closed += (s, args) => this.Close();
                     obj.Show();
 
@@ -116,7 +117,7 @@ namespace Modelling
                     //Editingpage edp = new Editingpage(uri.LocalPath);
                     //edp.IsOpen = 1; 
                     obj.Engprop = 0;
-                    obj.MyProperty = uri;
+                    obj.MyProperty = uri.LocalPath;
                     obj.Closed += (s, args) => this.Close();
                     obj.Show();
 
@@ -151,6 +152,12 @@ namespace Modelling
             Editor.Engprop = 0;
             Editor.Closed += (s, args) => this.Close();
             Editor.Show();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //var Msg = new Message("Some String here", "Title of Message Box");
+            MessageBox.Show("This software is works on only Windows devices and it is created by Berker Uğraş, Begüm Şencan, İbrahim Utku Sarıçan.","About");
         }
     }
 }
