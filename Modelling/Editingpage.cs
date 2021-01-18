@@ -6357,8 +6357,8 @@ namespace Modelling
             }
             else
             {
-                button4.Enabled = false;
-                button4.Visible = false;
+                button3.Enabled = false;
+                button3.Visible = false;
             }
         } 
     }
